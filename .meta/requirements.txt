@@ -4,4 +4,5 @@ MarkupSafe==1.0
 Werkzeug==0.12.2
 click==6.7
 itsdangerous==0.24
+requests==2.14.2
 uWSGI==2.0.15

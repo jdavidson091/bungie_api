@@ -1,9 +1,10 @@
 from django.urls import path
-from . import views
-
+from rest_framework.urlpatterns import format_suffix_patterns
+from destinyapp.bungie import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('weapon/', views.weapon_list, name='all weapons'),
-    path('weapon/<int:weapon_id>', views.weapon_list, name='specific weapon')
+    path('weapon/', views.WeaponList.as_view()),
+    path('weapon/<int:pk>/', views.WeaponDetail.as_view()),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)

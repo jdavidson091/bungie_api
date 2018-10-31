@@ -1,11 +1,13 @@
-from django.http import HttpResponse
+from destinyapp.bungie.models import Weapon
+from destinyapp.bungie.serializers import WeaponSerializer
+from rest_framework import generics
 
 
-def index(request):
-    return HttpResponse()
+class WeaponList(generics.ListCreateAPIView):
+    queryset = Weapon.objects.all()
+    serializer_class = WeaponSerializer
 
 
-def weapon_list(request, weapon_id=None):
-    if weapon_id:
-        return HttpResponse("TODO: specific weapon: {}".format(weapon_id))
-    return HttpResponse("TODO: All weapons")
+class WeaponDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Weapon.objects.all()
+    serializer_class = WeaponSerializer
